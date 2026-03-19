@@ -1,0 +1,35 @@
+.
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── project_tree.txt
+├── public
+│   ├── logo.png
+│   ├── mascotatonner.png
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.tsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── MascotEditor.tsx
+│   │   └── ModuleList.tsx
+│   ├── config
+│   │   └── layout.ts
+│   ├── data
+│   │   └── hubModules.tsx
+│   ├── hooks
+│   │   └── useLayoutControls.ts
+│   ├── icons.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── types.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+8 directories, 25 files

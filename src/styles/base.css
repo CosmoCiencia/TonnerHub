@@ -1,0 +1,129 @@
+.role-screen {
+  --mascot-size: 18rem;
+  --mascot-x: 8rem;
+  --mascot-y: -0.4rem;
+  --stage-padding-right: 0rem;
+  --stage-min-height: 39rem;
+  --card-scale: 1;
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.75rem;
+  background:
+    radial-gradient(circle at top left, rgba(96, 165, 250, 0.14), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.12), transparent 24%),
+    linear-gradient(135deg, #0a1f48 0%, #082b68 52%, #03152f 100%);
+}
+
+.role-screen__device {
+  position: relative;
+  width: min(100vw - 1.5rem, 24rem);
+  min-height: min(100dvh - 1.5rem, 52rem);
+  border-radius: 2.2rem;
+  overflow: hidden;
+  box-shadow:
+    0 30px 90px rgba(2, 8, 23, 0.38),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, #1d4d99 0%, #082b68 52%, #03152f 100%);
+}
+
+.role-screen__orb {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(120px);
+}
+
+.role-screen__orb--top {
+  top: -20%;
+  left: -10%;
+  width: 31.25rem;
+  height: 31.25rem;
+  background: rgba(96, 165, 250, 0.32);
+}
+
+.role-screen__orb--bottom {
+  right: -10%;
+  bottom: -20%;
+  width: 31.25rem;
+  height: 31.25rem;
+  background: rgba(34, 211, 238, 0.2);
+}
+
+.role-screen__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: min(100dvh - 1.5rem, 52rem);
+  padding: 1.5rem 0.9rem 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px);
+}
+
+
+.role-screen__logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.role-screen__logo {
+  width: auto;
+  height: 4rem;
+  object-fit: contain;
+}
+
+.role-screen__header {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.role-screen__header h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.role-screen__header p {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: rgba(219, 234, 254, 0.8);
+}
+
+.role-stage {
+  position: relative;
+  min-height: var(--stage-min-height);
+  padding-right: var(--stage-padding-right);
+}
+
+.role-screen__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(191, 219, 254, 0.6);
+}
+
+.role-screen__dot {
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: rgba(147, 197, 253, 0.4);
+}
+
+@media (min-height: 860px) {
+  .role-screen__panel {
+    padding-top: 1.8rem;
+  }
+}

@@ -6,6 +6,12 @@ type Props = {
   onSelect: (module: HubModule) => void
 }
 
+const moduleUrls: Record<string, string> = {
+  catalog: 'https://tonner-catalog.vercel.app/',
+  world: 'https://tonner-cup.vercel.app/',
+  paint: 'https://tonner-paint.vercel.app/',
+}
+
 export function ModuleList({ modules, onSelect }: Props) {
   return (
     <div className="role-cards" aria-label="Modulos disponibles">
@@ -25,6 +31,43 @@ export function ModuleList({ modules, onSelect }: Props) {
             : module.key === 'world'
               ? 'Tonner Cup'
               : 'Tonner Paint'
+
+        const url = moduleUrls[module.key]
+
+        if (url) {
+          return (
+            <a
+              key={module.key}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`role-card role-card--${module.accent} ${
+                hasHeroImage ? 'role-card--with-hero' : ''
+              }`}
+            >
+              {hasHeroImage ? null : (
+                <div className="role-card__icon-wrap">
+                  <Icon className="role-card__icon" />
+                </div>
+              )}
+
+              <div className="role-card__copy">
+                <h2>{module.label}</h2>
+                <p>{module.description}</p>
+              </div>
+
+              <ArrowRightIcon className="role-card__arrow" />
+
+              {hasHeroImage ? (
+                <img
+                  src={heroImageSrc}
+                  alt={heroImageAlt}
+                  className="role-card__hero-image"
+                />
+              ) : null}
+            </a>
+          )
+        }
 
         return (
           <button

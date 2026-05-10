@@ -67,7 +67,8 @@ function saveLayoutPlugin(): Plugin {
 export default defineConfig({
   plugins: [react(), saveLayoutPlugin()],
   server: {
-    port: 5173,
-    strictPort: true,
+    host: '0.0.0.0',
+    port: 5183,
+    strictPort: false,
   },
 })

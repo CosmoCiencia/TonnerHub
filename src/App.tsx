@@ -1,72 +1,56 @@
-import type { CSSProperties } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './styles/base.css'
 import './styles/cards.css'
 import './styles/mobile.css'
-import { MascotEditor } from './components/MascotEditor'
-import { ModuleList } from './components/ModuleList'
+import { HubHome } from './components/HubHome'
 import { Login } from './components/Login'
-import { UserProfile } from './components/UserProfile'
-import { MODULE_STORAGE_KEY } from './config/layout'
-import { hubModules } from './data/hubModules'
-import { useLayoutControls } from './hooks/useLayoutControls'
-import type { HubModule } from './types'
 
 function App() {
-  const { layoutControls } = useLayoutControls()
+  const [isLoading, setIsLoading] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  const handleSelectModule = (module: HubModule) => {
-    window.localStorage.setItem(MODULE_STORAGE_KEY, module.key)
-    window.location.assign(module.url)
-  }
+  useEffect(() => {
+    const loadingTimer = window.setTimeout(() => {
+      setIsLoading(false)
+    }, 1800)
+
+    return () => window.clearTimeout(loadingTimer)
+  }, [])
 
   const handleLogin = () => {
     setIsAuthenticated(true)
   }
 
+  if (isLoading) {
+    return (
+      <main className="loading-screen" aria-label="Cargando TonnerHub">
+        <img src="/PORTADA CARGA.png" alt="Pinturas Tonner" className="loading-screen__image" />
+      </main>
+    )
+  }
+
+  if (isAuthenticated) {
+    return <HubHome />
+  }
+
   return (
-    <main
-      className="role-screen"
-      style={
-        {
-          '--mascot-size': `${layoutControls.mascotSize}rem`,
-          '--mascot-x': `${layoutControls.mascotX}rem`,
-          '--mascot-y': `${layoutControls.mascotY}rem`,
-          '--stage-padding-right': `${layoutControls.stagePaddingRight}rem`,
-          '--stage-min-height': `${layoutControls.stageMinHeight}rem`,
-          '--card-scale': layoutControls.cardScale,
-        } as CSSProperties
-      }
-    >
+    <main className="role-screen">
       <div className="role-screen__device">
         <div className="role-screen__orb role-screen__orb--top" />
         <div className="role-screen__orb role-screen__orb--bottom" />
 
         <section className="role-screen__panel">
-          {isAuthenticated && <UserProfile />}
           <div className="role-screen__logo-wrap">
             <img src="/logo.png" alt="Pinturas Tonner" className="role-screen__logo" />
           </div>
 
           <header className="role-screen__header">
-            <h1>{isAuthenticated ? '¿Qué módulo quieres abrir?' : 'Bienvenido a TonnerHub'}</h1>
-            <p>
-              {isAuthenticated
-                ? 'Centralizamos el acceso al ecosistema digital Tonner'
-                : 'Accede a tu cuenta para continuar'}
-            </p>
+            <h1>Bienvenido a TonnerHub</h1>
+            <p>Accede con usuario demo y contraseña demo</p>
           </header>
 
           <div className="role-stage">
-            {isAuthenticated ? (
-              <>
-                <ModuleList modules={hubModules} onSelect={handleSelectModule} />
-                <MascotEditor />
-              </>
-            ) : (
-              <Login onLogin={handleLogin} />
-            )}
+            <Login onLogin={handleLogin} />
           </div>
 
           <footer className="role-screen__footer">

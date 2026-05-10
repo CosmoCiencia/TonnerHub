@@ -109,3 +109,14 @@ export function UserIcon({ className }: IconProps) {
     </svg>
   )
 }
+
+export function BellIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M12 22a2.7 2.7 0 0 0 2.58-1.9H9.42A2.7 2.7 0 0 0 12 22Z" />
+      <path d="M18.75 16.7 17.4 14.4V10a5.42 5.42 0 0 0-4.05-5.25V3.6a1.35 1.35 0 0 0-2.7 0v1.15A5.42 5.42 0 0 0 6.6 10v4.4l-1.35 2.3a1.25 1.25 0 0 0 1.08 1.88h11.34a1.25 1.25 0 0 0 1.08-1.88Z" />
+      <path d="M5.4 7.2a.8.8 0 0 1-.56-.23.78.78 0 0 1 0-1.12l1.4-1.4a.79.79 0 0 1 1.12 1.12L5.96 6.97a.8.8 0 0 1-.56.23Z" />
+      <path d="M18.6 7.2a.8.8 0 0 1-.56-.23l-1.4-1.4a.79.79 0 0 1 1.12-1.12l1.4 1.4a.78.78 0 0 1 0 1.12.8.8 0 0 1-.56.23Z" />
+    </svg>
+  )
+}

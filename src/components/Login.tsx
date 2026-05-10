@@ -12,7 +12,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'admin') {
+    if (username.trim().toLowerCase() === 'demo' && password === 'demo') {
       onLogin();
     } else {
       setError('Credenciales incorrectas. Intenta de nuevo.');
@@ -30,7 +30,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             className="login-input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Introduce tu usuario"
+            placeholder="demo"
             autoComplete="username"
           />
         </div>
@@ -43,7 +43,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             className="login-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
+            placeholder="demo"
             autoComplete="current-password"
           />
         </div>
